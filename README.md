@@ -1,2 +1,2 @@
 # final-tutorial
-Final Tutorial for CMSC430
+Final Tutorial for CMSC320
