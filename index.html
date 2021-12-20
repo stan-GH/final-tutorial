@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>temp-163998070063876520</title>
+<title>temp-164002380295023882</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13133,15 +13133,18 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><h2> Setup and Data Collection </h2>
-Of course, we started with importing some libraries that would allow us to do analysis on our data.</p>
+<center>
+    <h2> Setup and Data Collection </h2>
+</center><p><br>
+<br>
+Of course, we will start importing some libraries that would allow us to do analysis on our data.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[368]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span> <span class="k">as</span> <span class="nn">sql</span><span class="o">,</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span><span class="o">,</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="o">,</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span><span class="o">,</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">pyplot</span><span class="o">,</span> <span class="nn">math</span>
@@ -13153,6 +13156,7 @@ Of course, we started with importing some libraries that would allow us to do an
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">statistics</span>
 
 <span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;darkgrid&quot;</span><span class="p">)</span>
 <span class="c1">#Ignore warning labels</span>
@@ -13196,7 +13200,7 @@ Of course, we started with importing some libraries that would allow us to do an
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[369]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">movieDB</span> <span class="o">=</span> <span class="s1">&#39;movie.db&#39;</span>
@@ -13222,7 +13226,7 @@ Of course, we started with importing some libraries that would allow us to do an
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[2]:</div>
+    <div class="prompt output_prompt">Out[369]:</div>
 
 
 
@@ -13327,18 +13331,20 @@ Of course, we started with importing some libraries that would allow us to do an
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><h2> Preparing/Tidying Data </h2>
-To prepare the data for analysis, we will do the following:</p>
-<p>-Removing movies with 0's in any columns, as this generally indicates that the movies are unreleased.</p>
-<p>-Creating a datetime column for the release date.</p>
-<p>-Sorting by datetime in increasing order.</p>
+<center> 
+<h2> Preparing/Tidying Data </h2>
+</center><p>To prepare the data for analysis, we will do the following:</p>
+<p><ul>
+ <li> Removing movies with 0's in any columns, as this generally indicates that the movies are unreleased. </li></p>
+<li> Creating a datetime column for the release date. </li><p><li> Sorting by datetime in increasing order. </li>
+ <ul></p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[370]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Minor cleaning, remove movies with any 0s (generally these are unreleased movies)</span>
@@ -13364,7 +13370,7 @@ To prepare the data for analysis, we will do the following:</p>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[3]:</div>
+    <div class="prompt output_prompt">Out[370]:</div>
 
 
 
@@ -13467,7 +13473,7 @@ To prepare the data for analysis, we will do the following:</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2> Exploratory Data Analysis on Movie Data </h2><p>Now that our data is ready for analysis, we will perform exploratory data analysis to understand basic characteristics of the data. We will do some exploratory analysis of the information on movies in general. We'll first do a linear regression model looking at the relationship between movie popularity and movie revenue. We will look at every movie in the movies (moviesDF) DataFrame.</p>
+<center> <h2> Exploratory Data Analysis on Movie Data </h2> </center><p>Now that our data is ready for analysis, we will perform exploratory data analysis to understand basic characteristics of the data. We will do some exploratory analysis of the information on movies in general. We'll first do a linear regression model looking at the relationship between movie popularity and movie revenue. We will look at every movie in the movies (moviesDF) DataFrame.</p>
 
 </div>
 </div>
@@ -13482,7 +13488,7 @@ To prepare the data for analysis, we will do the following:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[371]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plot popularity against revenue</span>
@@ -13530,7 +13536,7 @@ To prepare the data for analysis, we will do the following:</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This looks really ugly! The data here is very skewed towards low revenue, low popularity so we'll need to do a log transformation on the data to get a better visualization. Let's fixed that.</p>
+<p>This is clearly not a good fit! The data here is very skewed towards low revenue, low popularity so we'll need to do a log transformation on the data to get a better visualization. We will fix this next.</p>
 
 </div>
 </div>
@@ -13538,13 +13544,13 @@ To prepare the data for analysis, we will do the following:</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4> -- Log Transformation, note that interpretation of coefficients becomes %'s -- </h4>
+<h4> Log Transformation </h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[372]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">mode</span><span class="o">.</span><span class="n">chained_assignment</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1">#Removes warning output text</span>
@@ -13567,6 +13573,7 @@ To prepare the data for analysis, we will do the following:</p>
 <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">popularityColLog</span><span class="p">,</span> <span class="n">m</span><span class="o">*</span><span class="n">popularityColLog</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
 
 <span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;y = </span><span class="si">{m}</span><span class="s1">x + </span><span class="si">{b}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13591,6 +13598,17 @@ To prepare the data for analysis, we will do the following:</p>
 
 </div>
 
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>y = 0.7983247133427974x + 14.35708373041807
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -13598,7 +13616,8 @@ To prepare the data for analysis, we will do the following:</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>From the scatter plot, we see a positive correlation between popularity and revenue. This means as popularity of a movie rises then its revenue will also rise. Most of the data is centered at around 2 - 5 log popularity with most revenue being above 12.5 log revenue. This result was expected since if a movie was popular then that means a lot of people wanted to see it and so they bought tickets to go see it at the movie theatre or streamed it on one of the movie streaming platforms that had the movie. This generates revenue for the movie.</p>
+<p>From the scatter plot, we see a positive correlation between popularity and revenue. This means as popularity of a movie rises then its revenue will also rise. More clearly, a 1% increase in popularity is, on average, associated with a .798% increase in revenue for a movie. In addition, we notice that most of the data is centered at around 2 - 5 log popularity with most revenue being above 12.5 log revenue.</p>
+<p>This result was expected since if a movie was popular then that means a lot of people wanted to go see it and so they bought tickets to go see it at the movie theatre or streamed it on one of the movie streaming platforms that had the movie. This, in turn, would generate revenue for the movie.</p>
 
 </div>
 </div>
@@ -13606,14 +13625,14 @@ To prepare the data for analysis, we will do the following:</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3> Movie Rating and Revenue </h3><p>Now, we will analyze the relationship between a movie's rating and its revenue. We hypothesize that movies with higher ratings will tend to generate more revenue.</p>
+<center> <h3> Movie Rating and Revenue </h3> </center><p>Now, we will analyze the relationship between a movie's rating and its revenue. We hypothesize that movies with higher ratings will tend to generate more revenue.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[373]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Gets x and y variables.</span>
@@ -13667,14 +13686,14 @@ To prepare the data for analysis, we will do the following:</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3> Movie Budget and Revenue </h3><p>We suspect that the budget of the movie might have a heavier influence on the total revenue than the movie's rating, so we are going to plot Budget vs. Movie Revenue to investigate this relationship. Because this data is very skewed, we are instead going to plot Log Budget vs. Log Movie Revenue to help us see the relationship better.</p>
+<center> <h3> Movie Budget and Revenue </h3> </center><p>We suspect that the budget of the movie might have a heavier influence on the total revenue than the movie's rating, so we are going to plot Budget vs. Movie Revenue to investigate this relationship. Because we have already noted that this data is very skewed, we are instead going to plot Log Budget vs. Log Movie Revenue to help us see the relationship better.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[374]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Takes log of budget.</span>
@@ -13727,7 +13746,7 @@ To prepare the data for analysis, we will do the following:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[375]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calculates Pearson correlation coefficient. </span>
@@ -13761,7 +13780,9 @@ To prepare the data for analysis, we will do the following:</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Based on the plot, we can see a linear relationship between the budget and the movie revenue. The Pearson correlation coefficient tells us that the budget and the movie revenue are positively correlated and that the linear association between the two variables is fairly strong. This makes sense since if you spend/invest more then your return on investment (ROI) should theoretically be higher.</p>
+<p>Based on the plot, we can see a linear relationship between the budget and the movie revenue.</p>
+<p>The Pearson correlation coefficent results in a number between -1 &lt;= p &lt;= 1 where p is the corrleation coefficient. A number closer to 1 means that there is a strong positive relationship between the variables being looked at. While a number closer to -1 means that there is a strong negative relationship between the variables. A correlation of 0 means that there is no relationship. You can learn more about the Pearson correlation coefficient here: <a href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient">https://en.wikipedia.org/wiki/Pearson_correlation_coefficient</a>.</p>
+<p>The Pearson correlation coefficient tells us that the budget and the movie revenue are positively correlated and that the linear association between the two variables is somewhat strong. This makes sense since if you spend/invest more then your return on investment (ROI) should theoretically be higher.</p>
 
 </div>
 </div>
@@ -13769,7 +13790,7 @@ To prepare the data for analysis, we will do the following:</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3> Movie Data Over Time </h3><p>Now, we are going to investigate how movie data has changed from 2018 to 2021 by plotting some violin plots.</p>
+<center> <h3> Movie Data Over Time </h3> </center><p>Now, we are going to investigate how movie data has changed from 2018 to 2021 by plotting some violin plots.</p>
 <p>First, we are going to create a year column.</p>
 
 </div>
@@ -13777,7 +13798,7 @@ To prepare the data for analysis, we will do the following:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[376]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Extracts year from release date and creates a seperate &#39;year&#39; column in the dataframe.</span>
@@ -13797,7 +13818,7 @@ To prepare the data for analysis, we will do the following:</p>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[9]:</div>
+    <div class="prompt output_prompt">Out[376]:</div>
 
 
 
@@ -13923,49 +13944,39 @@ To prepare the data for analysis, we will do the following:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[377]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">pyplot</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">18</span><span class="p">))</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 
-<span class="c1"># Revenue</span>
-
+<span class="c1"># -- Revenue --</span>
 <span class="c1"># Creates violin plot.</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;log revenue&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="o">=</span><span class="n">moviesDF</span><span class="p">)</span>
-
 <span class="c1"># Sets plot labels.</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Log Revenue&quot;</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Year vs. Log Revenue&quot;</span><span class="p">)</span>
 
-
-<span class="c1"># Budget</span>
-
+<span class="c1"># -- Budget --</span>
 <span class="c1"># Creates violin plot.</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;log budget&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">data</span><span class="o">=</span><span class="n">moviesDF</span><span class="p">)</span>
-
 <span class="c1"># Sets plot labels.</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Log Budget&quot;</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Year vs. Log Budget&quot;</span><span class="p">)</span>
 
-<span class="c1"># Popularity</span>
-
+<span class="c1"># -- Popularity --</span>
 <span class="c1"># Creates violin plot.</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;log popularity&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">data</span><span class="o">=</span><span class="n">moviesDF</span><span class="p">)</span>
-
 <span class="c1"># Sets plot labels.</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Log Popularity&quot;</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Year vs. Log Popularity&quot;</span><span class="p">)</span>
 
-
-<span class="c1"># Average Vote Rating</span>
-
+<span class="c1"># -- Average Vote Rating --</span>
 <span class="c1"># Creates violin plot.</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;vote_average&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">data</span><span class="o">=</span><span class="n">moviesDF</span><span class="p">)</span>
-
 <span class="c1"># Sets plot labels.</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Average Vote Rating&quot;</span><span class="p">)</span>
@@ -14011,8 +14022,10 @@ To prepare the data for analysis, we will do the following:</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2> Relating Movie Data to COVID-19 Data </h2><h3> Covid Dataset </h3><p>Before we can analyze the COVID-19 data with respect to the movie data, we have to fetch the COVID-19 data and then integrate it into the movies data frame.</p>
-<p>We will use the "Covid-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University" (<a href="https://github.com/CSSEGISandData/COVID-19">https://github.com/CSSEGISandData/COVID-19</a>) which contains Covid case numbers and deaths around the world between 2019 and the present day (as of writing this that would be December 2021).</p>
+<center> <h2> Relating Movie Data to COVID-19 Data </h2> </center><p><br>
+<br></p>
+<center> <h3> Covid Dataset </h3> </center><p>Before we can analyze the COVID-19 data with respect to the movie data, we have to fetch the COVID-19 data and then integrate it into the movies data frame.</p>
+<p>We will use the <a href="https://github.com/CSSEGISandData/COVID-19">Covid-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University</a> which contains Covid case numbers and deaths around the world between 2019 and the present day (as of writing this, that would be December 2021).</p>
 <p>The parameters of interest to us include cumulative cases (or total number of covid cases since that day), daily new cases (number of cases found on that day), two week cases, cumulative deaths, and daily new deaths.</p>
 
 </div>
@@ -14021,15 +14034,14 @@ To prepare the data for analysis, we will do the following:</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3> Fetching Data </h3><p>-- Pulling covid dataset, include information about source, reason to aggregate, etc etc --</p>
-<p>-- Adding last 14 day cases count, and pre/post covid to movie df --</p>
+<center> <h3> Fetching Data </h3> </center><p>Here, we are simply fetching data from our source. In order to make advanced analyses later, we will also calculate the daily new cases, daily new deaths, and 14-day case increase for each date.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[378]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Reads covid19 worldwide cases csv file</span>
@@ -14084,7 +14096,7 @@ To prepare the data for analysis, we will do the following:</p>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[11]:</div>
+    <div class="prompt output_prompt">Out[378]:</div>
 
 
 
@@ -14177,20 +14189,21 @@ To prepare the data for analysis, we will do the following:</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3> Combining COVID-19 and Movie Data </h3><p>Here, we will extract revelant information from the COVID-19 table and add it to the movie data frame. We are joining the COVID-19 data on date and the movie data on release date</p>
+<center> <h3> Combining COVID-19 and Movie Data </h3> </center><p>Here, we will extract relevant information from the COVID-19 table and add it to the movie data frame. We simply append the rows from the COVID dataframe based on matching release date, and then add a 'during_covid' indicator variable for whether or not the movie was released during the pandemic or not. This will allow us to analyze this data more easily moving forward.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[379]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">moviesDF</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;cumulative_cases&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">moviesDF</span><span class="p">)</span>
 <span class="n">moviesDF</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;daily_new_cases&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">moviesDF</span><span class="p">)</span>
 <span class="n">moviesDF</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;cumulative_deaths&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">moviesDF</span><span class="p">)</span>
 <span class="n">moviesDF</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;daily_new_deaths&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">moviesDF</span><span class="p">)</span>
+<span class="n">moviesDF</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;two_week_cases&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">moviesDF</span><span class="p">)</span>
 <span class="n">moviesDF</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;during_covid&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">moviesDF</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">moviesDF</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
@@ -14202,6 +14215,7 @@ To prepare the data for analysis, we will do the following:</p>
         <span class="n">moviesDF</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;cumulative_cases&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">covid_row</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;cumulative_cases&#39;</span><span class="p">]</span>
         <span class="n">moviesDF</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;daily_new_cases&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">covid_row</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;daily_new_cases&#39;</span><span class="p">]</span>
         <span class="n">moviesDF</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;cumulative_deaths&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">covid_row</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;cumulative_deaths&#39;</span><span class="p">]</span>
+        <span class="n">moviesDF</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;two_week_cases&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">covid_row</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;two_week_cases&#39;</span><span class="p">]</span>
         <span class="n">moviesDF</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;daily_new_deaths&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">covid_row</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;daily_new_deaths&#39;</span><span class="p">]</span>
         <span class="n">moviesDF</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;during_covid&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
@@ -14220,7 +14234,7 @@ To prepare the data for analysis, we will do the following:</p>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[12]:</div>
+    <div class="prompt output_prompt">Out[379]:</div>
 
 
 
@@ -14259,6 +14273,7 @@ To prepare the data for analysis, we will do the following:</p>
       <th>daily_new_cases</th>
       <th>cumulative_deaths</th>
       <th>daily_new_deaths</th>
+      <th>two_week_cases</th>
       <th>during_covid</th>
     </tr>
   </thead>
@@ -14277,6 +14292,7 @@ To prepare the data for analysis, we will do the following:</p>
       <td>18.934606</td>
       <td>16.118096</td>
       <td>2018</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -14301,6 +14317,7 @@ To prepare the data for analysis, we will do the following:</p>
       <td>0</td>
       <td>0</td>
       <td>0</td>
+      <td>0</td>
       <td>False</td>
     </tr>
     <tr>
@@ -14317,6 +14334,7 @@ To prepare the data for analysis, we will do the following:</p>
       <td>16.895279</td>
       <td>16.454568</td>
       <td>2018</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -14341,6 +14359,7 @@ To prepare the data for analysis, we will do the following:</p>
       <td>0</td>
       <td>0</td>
       <td>0</td>
+      <td>0</td>
       <td>False</td>
     </tr>
     <tr>
@@ -14361,6 +14380,7 @@ To prepare the data for analysis, we will do the following:</p>
       <td>0</td>
       <td>0</td>
       <td>0</td>
+      <td>0</td>
       <td>False</td>
     </tr>
   </tbody>
@@ -14377,18 +14397,15 @@ To prepare the data for analysis, we will do the following:</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>-- Advanced Regression Models --</p>
-<ul> 
-    <li> Popularity vs. Cases </li>
-    <li> Popularity vs. Death rates </li>
-    <li> Revenue vs. Cases </li>
-</ul>
+<center> <h3> Popularity v Cumulative Cases </h3> </center><p>To start, we will do a least squares regression to ensure that there is a relationship between population and cumulative cases. This is important as it serves as a basis for our further comparative analysis between the movie industry and COVID.</p>
+<p>To do this, we will create a least squares regression and then perform a t-test to test the significance of cumulative cases in predicting the popularity of a movie. We will test $H_0: \beta_1 = 0$ and $H_a: \beta_1 \neq 0$, using a significance level of $\alpha = 0.05$.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[380]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Get model for population by case</span>
@@ -14406,7 +14423,7 @@ To prepare the data for analysis, we will do the following:</p>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[13]:</div>
+    <div class="prompt output_prompt">Out[380]:</div>
 
 
 
@@ -14426,7 +14443,7 @@ To prepare the data for analysis, we will do the following:</p>
   <th>Date:</th>             <td>Mon, 20 Dec 2021</td> <th>  Prob (F-statistic):</th> <td>3.92e-06</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>01:04:59</td>     <th>  Log-Likelihood:    </th> <td> -3431.3</td>
+  <th>Time:</th>                 <td>13:09:07</td>     <th>  Log-Likelihood:    </th> <td> -3431.3</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   449</td>      <th>  AIC:               </th> <td>   6867.</td>
@@ -14477,19 +14494,26 @@ To prepare the data for analysis, we will do the following:</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3> Revenue and Budget Before and After COVID-19 </h3><p>Here, we will compare the revenue and budget of movies before and after COVID-19.</p>
+<center> <h2> Hypthosis Testing </h2> </center><p>Our results here are quite interesting, as they contradict our original hypothesis. Our results show that cases and popularity are actually positively correlated. That is, an increase in cases by 1 is correlated with an increase in popularity of 0.000001877. While this may seem small at first glance, this is quite significant when considering the number of cases of COVID that occurred internationally.</p>
+<p>Our hypothesis test also resulted in a t-statistic of 4.674 and a corresponding p-value of 0.000, as shown in the above output, further clarifying that cases are significant in explaining the variability of popularity.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center> <h3> Revenue and Budget Before and After COVID-19 </h3> </center><p>Of course, popularity is not the only metric by which the success of an industry is determined. So, we will next look at how the relationship between revenue and budget of movies was affected by whether or not the movie was released during the pandemic. That is, we will compare the revenue and budget of movies before and after COVID-19.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[381]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Analyzing the relationship (if any) between revenue and budget before and after covid.</span>
-
-<span class="n">revenueDuringCovid</span> <span class="o">=</span> <span class="p">[]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">revenueDuringCovid</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">revenueBeforeCovid</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">budgetDuringCovid</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">budgetBeforeCovid</span> <span class="o">=</span> <span class="p">[]</span>
@@ -14511,7 +14535,6 @@ To prepare the data for analysis, we will do the following:</p>
         <span class="n">budgetBeforeCovid</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">budget</span><span class="p">)</span>
         <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">budget</span><span class="p">,</span> <span class="n">revenue</span><span class="p">)</span>
 
-
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;log Budget vs log Revenue Before Covid&quot;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;log Budget&quot;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;log Revenue&quot;</span><span class="p">)</span>
@@ -14524,11 +14547,11 @@ To prepare the data for analysis, we will do the following:</p>
 
 <span class="n">m1</span><span class="p">,</span> <span class="n">b1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">budgetBeforeCovid</span><span class="p">,</span> <span class="n">revenueBeforeCovid</span><span class="p">,</span> <span class="n">deg</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="c1">#Plot regression line for budget before covid vs revenue before Covid scatter plot</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">budgetBeforeCovid</span><span class="p">,</span> <span class="n">m1</span><span class="o">*</span><span class="n">budgetBeforeCovid</span> <span class="o">+</span> <span class="n">b1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">budgetBeforeCovid</span><span class="p">,</span> <span class="n">m1</span><span class="o">*</span><span class="n">budgetBeforeCovid</span> <span class="o">+</span> <span class="n">b1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">);</span>
 
 <span class="n">m2</span><span class="p">,</span> <span class="n">b2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">budgetDuringCovid</span><span class="p">,</span> <span class="n">revenueDuringCovid</span><span class="p">,</span> <span class="n">deg</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="c1">#Plot regression line for budget after covid vs revenue after Covid scatter plot</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">budgetDuringCovid</span><span class="p">,</span> <span class="n">m2</span><span class="o">*</span><span class="n">budgetDuringCovid</span> <span class="o">+</span> <span class="n">b2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">budgetDuringCovid</span><span class="p">,</span> <span class="n">m2</span><span class="o">*</span><span class="n">budgetDuringCovid</span> <span class="o">+</span> <span class="n">b2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">);</span>
 </pre></div>
 
     </div>
@@ -14538,19 +14561,6 @@ To prepare the data for analysis, we will do the following:</p>
 <div class="output_wrapper">
 <div class="output">
 
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[14]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[&lt;matplotlib.lines.Line2D at 0x13d496220&gt;]</pre>
-</div>
-
-</div>
 
 <div class="output_area">
 
@@ -14597,14 +14607,14 @@ To prepare the data for analysis, we will do the following:</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3> Movie Popularity and Daily New Cases </h3><p>Here, we will investigate the relationship between movie popularity and daily new COVID-19 cases during the pandemic. We want to check out if there's a parallel or inverse relationship between popularity and daily new Covid-19 cases.</p>
+<center> <h3> Movie Popularity and Daily New Cases </h3> </center><p>Here, we will investigate the relationship between movie popularity and daily new COVID-19 cases during the pandemic. We want to check out if there's a parallel or inverse relationship between popularity and daily new Covid-19 cases.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[382]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Filters out data points that did not occur during the pandemic.</span>
@@ -14625,7 +14635,6 @@ To prepare the data for analysis, we will do the following:</p>
 <span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">plot1</span> <span class="o">+</span> <span class="n">plot2</span><span class="p">,</span> <span class="n">label1</span> <span class="o">+</span> <span class="n">label2</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
 
 <span class="c1"># Adjusts plot axes.</span>
-
 <span class="n">ax1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s1">&#39;%b-%Y&#39;</span><span class="p">))</span>
 
 <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">ax1</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">):</span>
@@ -14677,40 +14686,56 @@ To prepare the data for analysis, we will do the following:</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3> Log Standardized Popularity vs. Log Standardized Daily New Cases </h3><p>Now, we will plot Log Standardized Popuarity vs. Log Standardized Daily New Cases to help us see if there is a relationship between the two variables. We first standardize the variables using the Z-score to make the variables more comparable. Next, we take the log of these variables to make the data less skewed. Because the Z-score can have values &lt;= 0, we will add a constant 'c' before taking the log.</p>
+<center> <h3> Log Standardized Popularity vs. Log Standardized Daily New Cases </h3> </center><p>Now, we will plot Log Standardized Popuarity vs. Log Standardized Daily New Cases to help us see if there is a relationship between the two variables. We first standardize the variables using the Z-score to make the variables more comparable. Next, we take the log of these variables to make the data less skewed. Because the Z-score can have values &lt;= 0, we will add a constant 'c' before taking the log.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[383]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Extracts appropriate columns.</span>
-<span class="n">popularity</span><span class="p">,</span> <span class="n">daily_new_cases</span> <span class="o">=</span> <span class="n">moviesDF</span><span class="p">[</span><span class="s1">&#39;popularity&#39;</span><span class="p">],</span> <span class="n">moviesDF</span><span class="p">[</span><span class="s1">&#39;daily_new_cases&#39;</span><span class="p">]</span>
+<span class="c1"># popularity, daily_new_cases = moviesDF[&#39;popularity&#39;], moviesDF[&#39;daily_new_cases&#39;]</span>
+
+<span class="n">daily_new_cases</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">popularity</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">moviesDF</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">moviesDF</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;during_covid&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">daily_new_cases</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">moviesDF</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;daily_new_cases&#39;</span><span class="p">])</span>
+        <span class="n">popularity</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">moviesDF</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;popularity&#39;</span><span class="p">])</span>
 
 <span class="c1"># Standardizes columns using Z-score.</span>
-<span class="n">moviesDF</span><span class="p">[</span><span class="s1">&#39;standardized popularity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">popularity</span> <span class="o">-</span> <span class="n">popularity</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">/</span> <span class="n">popularity</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-<span class="n">moviesDF</span><span class="p">[</span><span class="s1">&#39;standardized daily new cases&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">daily_new_cases</span> <span class="o">-</span> <span class="n">daily_new_cases</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">/</span> <span class="n">daily_new_cases</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">standardized_pop</span> <span class="o">=</span> <span class="p">(</span><span class="n">popularity</span> <span class="o">-</span> <span class="n">statistics</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">popularity</span><span class="p">))</span> <span class="o">/</span> <span class="n">statistics</span><span class="o">.</span><span class="n">stdev</span><span class="p">(</span><span class="n">popularity</span><span class="p">)</span>
+<span class="n">standardized_new_cases</span> <span class="o">=</span> <span class="p">(</span><span class="n">daily_new_cases</span> <span class="o">-</span> <span class="n">statistics</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">daily_new_cases</span><span class="p">))</span> <span class="o">/</span> <span class="n">statistics</span><span class="o">.</span><span class="n">stdev</span><span class="p">(</span><span class="n">daily_new_cases</span><span class="p">)</span>
 
 <span class="c1"># Takes the log of Z-score.</span>
 <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">popularity_log</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">moviesDF</span><span class="p">[</span><span class="s1">&#39;standardized popularity&#39;</span><span class="p">]]</span>
-<span class="n">cases_log</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">moviesDF</span><span class="p">[</span><span class="s1">&#39;standardized daily new cases&#39;</span><span class="p">]]</span>
+<span class="n">popularity_log</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">standardized_pop</span><span class="p">]</span>
+<span class="n">cases_log</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">standardized_new_cases</span><span class="p">]</span>
+
+<span class="n">cases_log_without_nan</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">popularity_log_without_nan</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1">#Removes nan values from both cases log and popularity log</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">cases_log</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">cases_log</span><span class="p">[</span><span class="n">i</span><span class="p">]):</span>
+        <span class="n">cases_log_without_nan</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cases_log</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">popularity_log_without_nan</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">popularity_log</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 
 <span class="c1"># Gets x and y variables to plot.</span>
-<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">cases_log</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">popularity_log</span><span class="p">)</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">cases_log_without_nan</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">popularity_log_without_nan</span><span class="p">)</span>
 
-<span class="c1"># Creates scatter plot.</span>
+<span class="c1"># # Creates scatter plot.</span>
 <span class="n">fig1</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">pyplot</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-<span class="c1"># Creates linear regression line.</span>
+<span class="c1"># # # Creates linear regression line.</span>
 <span class="n">m</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">deg</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">m</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
 
-<span class="c1"># Adjusts plot axes.</span>
+<span class="c1"># # Adjusts plot axes.</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Log Standardized Daily New Cases vs. Log Standardized Popularity&quot;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Log Standardized Popularity&quot;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Log Standardized Daily New Cases&quot;</span><span class="p">)</span>
@@ -14734,7 +14759,7 @@ To prepare the data for analysis, we will do the following:</p>
 
 
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,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"
+<img src="data:image/png;base64,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"
 >
 </div>
 
@@ -14746,7 +14771,7 @@ To prepare the data for analysis, we will do the following:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[384]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calculates Pearson correlation coefficient. </span>
@@ -14768,7 +14793,7 @@ To prepare the data for analysis, we will do the following:</p>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Pearson correlation coefficient: 0.33979066882094233
+<pre>Pearson correlation coefficient: 0.2305347883361427
 </pre>
 </div>
 </div>
@@ -14780,7 +14805,8 @@ To prepare the data for analysis, we will do the following:</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Looking at the plot, there is a slight positive correlation between popularity and daily new cases, which we also observed in the previous plot. As we stated earlier, the reason why the correlation is positive and fairly weak is because the increase in movie popularity during the pandemic through streaming services which may have offset the decrease in movie popularity as a result of movie theatres shutting down. However, the increase in movie popularity during the pandemic through streaming services may have been more significant, which is why the correlation is positive.</p>
+<p>The popularity data in the plot is only for movies during Covid. We had to do this because our data would get really ugly and skewed towards the left as movies released before covid had data with zero covid cases. We also standardized both popularity and daily new cases. Standardization is a useful technique used in statistics to put the the variables onto the same scale or units. You can learn more about the usefulness of standardization here: <a href="https://www.sisense.com/glossary/data-standardization/">https://www.sisense.com/glossary/data-standardization/</a>.</p>
+<p>Looking at the plot, there is a slight positive correlation between popularity and daily new cases, which we also observed in the previous plot. As we stated earlier, the reason why the correlation is positive and fairly weak is because the increase in movie popularity during the pandemic through streaming services which may have offset the decrease in movie popularity as a result of movie theatres shutting down. However, the increase in movie popularity during the pandemic through streaming services may have been more significant, which is why the correlation is positive. The Pearson correlation coefficient backs this weak relationship as it provided a low correlation coefficient of 0.33.</p>
 
 </div>
 </div>
@@ -14788,12 +14814,12 @@ To prepare the data for analysis, we will do the following:</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2> Conclusion </h2><p>In summary, before looking at Covid data we looked at average movie rating, budget, and popularity and analyzed each of them to see if there was any relationship between it and movie revenue. We used linear regression to look at the relationship between movie budget and movie revenue and at the relationship between movie popularity and movie revenue. For both of these parameters we did find a positive correlation which suggests that there is a relationship. For average movie rating, we used a violin plot to analyze the relationship between it and movie revenue. The relationship presented by the plot wasn't as clear as the linear regression plots. We do see an increase in revenue as average movie rating increases. However, at the same time, the variance increases as average movie rating increases and we see some outliers.</p>
+<center> <h2> Conclusion and Summary </h2> </center><p>In summary, before looking at Covid data we looked at average movie rating, budget, and popularity and analyzed each of them to see if there was any relationship between it and movie revenue. We used linear regression to look at the relationship between movie budget and movie revenue and at the relationship between movie popularity and movie revenue. For both of these parameters we did find a positive correlation which suggests that there is a relationship. For average movie rating, we used a violin plot to analyze the relationship between it and movie revenue. The relationship presented by the plot wasn't as clear as the linear regression plots. We do see an increase in revenue as average movie rating increases. However, at the same time, the variance increases as average movie rating increases and we see some outliers.</p>
 <p>We then took a look at the effects Covid-19 had on the movie industry and the results were more or less expected. We first compared the relationship between budget and revenue before and after covid. We found a positive correlation between budget and revenue before Covid but not for one after Covid. This could suggest that the movie industry was disrupted by the pandemic. Throughout most of 2020, countries ordered lockdowns and closed commerical businesses that weren't considered non-essential and this included movie theatres. This is most likely the reason our regression plot for revenue vs budget after Covid had data points that didn't show uniformity like the regression plot for revenue vs budget before Covid.</p>
 <p>After that, we compared the trend between movie popularity with Covid-19 cases using a line plot. What's interesting here is that movie popularity increased at the beginning of 2021. This could be due to the rising popularity of watching movies on movie streaming services like Netfix, Disney+, Hulu, etc. Since people couldn't go to movie theatres due to lockdowns and/or avoiding crowds of people due to the ongoing pandemic, they chose to subscribe to movie streaming services to watch new movie releases and to stay entertained. There could also be other confounding factors that could be affecting the trend presented in the line plot and this is something we will look at in our future research.</p>
 <p>Lastly, we looked at the relationship between daily new cases and standardized popularity. We calculated the Pearson correlation coefficient to do this and the coefficient we got was very low (~0.34) which suggests that the relationship was very weak.</p>
 <p>After all that analysis, we found that the movie industy was in fact impacted by Covid 19.</p>
-<h2> Future Research </h2><p>We were very happy at the results we came to in our research and we would like to expand our research to other industries to see how their revenues were affected. We are interested to see if there were other industries that were resillient against the effects of the pandemic and which industries were not so lucky.</p>
+<center> <h2> Future Research </h2> </center><p>We were very happy at the results we came to in our research and we would like to expand our research to other industries to see how their revenues were affected. We are interested to see if there were other industries that were resillient against the effects of the pandemic and which industries were not so lucky.</p>
 
 </div>
 </div>
